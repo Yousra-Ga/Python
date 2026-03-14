@@ -19,4 +19,3 @@ for num in data[0].split():
 
     subprocess.run(["notify-send", title, message])
 mail.logout()
-
