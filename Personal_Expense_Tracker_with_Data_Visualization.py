@@ -11,8 +11,11 @@ def check_date(the_date):
         return True
     except:
         return False
-    
+
 while exit_choise != "yes":
+    
+    mounth_amount= input("entre your mounth amount:")
+ 
     date= input("give the date:")
 
     if not check_date(date):
@@ -31,5 +34,13 @@ while exit_choise != "yes":
     enters.append(expense)
     exit_choise = input("you want to exit(yes/no):")
 
-for enter in enters:
-    print(f"enters are:{enter}")
+with open("expense.csv", "w") as f:
+    f.write("date,category,note,amount\n")
+    for enter in enters:
+        x = f"{enter['date']},{enter['category']},{enter['note']},{enter['amount']}\n"
+        f.write(x)
+
+with open("expense.csv","r") as f:
+    print("\nenters are:")
+    print(f.read())
+    f.close()
